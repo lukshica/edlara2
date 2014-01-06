@@ -14,4 +14,4 @@ before_script:
 
 script:
   - bin/phpunit
-  - bin/codecept
+  - bin/codecept run
