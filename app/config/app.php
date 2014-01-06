@@ -133,9 +133,7 @@ return array(
         'Philf\Setting\SettingServiceProvider',
 
 
-
-
-        'Gnanakeethan\Edor\EdorServiceProvider',
+        'Edlara\EdlaraServiceProvider',
     ),
 
     /*
