@@ -8,6 +8,7 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-source --dev -vvv
+  - composer install --no-interaction --prefer-source --dev -vvv -d=workbench/gnanakeethan/edor
   - mysql -e 'create database edorchestral;'
   - mysql -e 'create database edorchestral_test;'
 
