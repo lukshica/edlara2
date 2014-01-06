@@ -125,6 +125,17 @@ return array(
 
         'Orchestra\Foundation\ConsoleSupportServiceProvider',
         'Orchestra\Foundation\FoundationServiceProvider',
+
+
+
+        'Way\Generators\GeneratorsServiceProvider',
+        'Rtablada\PackageInstaller\PackageInstallerServiceProvider',
+        'Philf\Setting\SettingServiceProvider',
+
+
+
+
+        'Gnanakeethan\Edor\EdorServiceProvider',
     ),
 
     /*

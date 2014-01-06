@@ -3,14 +3,15 @@ language: php
 php:
   - 5.5
   - 5.4
-  - hhvm
 
 before_script:
+  - sudo apt-get install libpcre3 libpcre3-dev
   - composer self-update
+  - composer install --no-interaction --prefer-source --dev -vvv -d=workbench/gnanakeethan/edor
   - composer install --no-interaction --prefer-source --dev -vvv
   - mysql -e 'create database edorchestral;'
   - mysql -e 'create database edorchestral_test;'
 
 script:
-  - vendor/bin/phpunit
-  - vendor/bin/codecept
+  - bin/phpunit
+  - bin/codecept
