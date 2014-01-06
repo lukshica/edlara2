@@ -1,5 +1,6 @@
 #EDLARA2
 
+Travis Status: [![Build Status](https://travis-ci.org/grans/edlara2.png)](https://travis-ci.org/grans/edlara2)
 
 This is a major rewrite of the Edlara Version 1.
 
