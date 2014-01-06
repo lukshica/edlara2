@@ -1,0 +1,57 @@
+{
+	"name": "orchestra/platform",
+	"description": "Orchestra Platform 2",
+	"homepage": "http://orchestraplatform.com/docs/latest/",
+	"keywords": ["framework", "laravel", "orchestra-platform", "orchestral"],
+	"license": "MIT",
+	"require": {
+		"orchestra/foundation": "2.1.*",
+		"orchestra/control": "2.1.*",
+		"orchestra/story": "2.1.*",
+		"facebook/php-sdk"          : "@stable",
+        "hybridauth/hybridauth"     : "dev-master",
+        "way/generators"            : "dev-master",
+        "rtablada/package-installer": "dev-master",
+        "symfony/process"           : "2.4.*@dev",
+        "philf/setting"             : "dev-master"
+    },
+    "require-dev":{
+        "twbs/bootstrap"            : "3.0.*",
+        "codeception/codeception"   : "dev-master",
+        "phpunit/php-code-coverage" : ">=1.2.10,<1.3.0",
+        "codeception/aspect-mock"   : "@stable",
+        "way/laravel-test-helpers"  : "dev-master",
+        "mockery/mockery"           : "dev-master",
+        "way/phpunit-wrappers"      : "dev-master"
+    },
+	"autoload": {
+		"classmap": [
+			"app/commands",
+			"app/controllers",
+			"app/models",
+			"app/database/migrations",
+			"app/database/seeds",
+			"app/tests/TestCase.php"
+		]
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan clear-compiled",
+			"php artisan orchestra:optimize",
+			"php artisan asset:publish orchestra/foundation"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan orchestra:optimize",
+			"php artisan asset:publish orchestra/foundation"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+        "bin-dir":"bin",
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "dev"
+}

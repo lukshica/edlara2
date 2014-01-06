@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 5.5
+  - 5.4
+  - hhvm
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction --prefer-source --dev -vvv
+  - mysql -e 'create database edorchestral;'
+  - mysql -e 'create database edorchestral_test;'
+
+script:
+  - vendor/bin/phpunit
+  - vendor/bin/codecept
