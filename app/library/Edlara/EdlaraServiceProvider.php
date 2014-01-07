@@ -1,8 +1,8 @@
-<?php namespace Gnanakeethan\Edor;
+<?php namespace Edlara;
 
 use Illuminate\Support\ServiceProvider;
 
-class EdorServiceProvider extends ServiceProvider {
+class EdlaraServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -18,15 +18,7 @@ class EdorServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        //Telling that this is a package from a repository
-        $this->package('gnanakeethan/edor');
-
-
-        //Identifying Path to the File
-        $path = realpath(__DIR__.'/../../');
-
-        //Including the Start File into the System.
-        include "{$path}/start.php";
+        //
     }
 
     /**

@@ -1,4 +1,4 @@
-<?php namespace Gnanakeethan\Edor\Routing;
+<?php namespace Edlara\Routing;
 
 use Illuminate\Support\Facades\View;
 
