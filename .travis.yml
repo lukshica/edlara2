@@ -10,6 +10,7 @@ before_script:
   - composer install --no-interaction --prefer-source --dev -vvv
   - mysql -e 'create database edorchestral;'
   - mysql -e 'create database edorchestral_test;'
+  - php artisan serve &
 
 script:
   - bin/phpunit
