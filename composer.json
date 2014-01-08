@@ -13,6 +13,7 @@
         "way/generators"            : "dev-master",
         "rtablada/package-installer": "dev-master",
         "symfony/process"           : "2.4.*@dev",
+        "laravelbook/ardent"        : "dev-master",
         "philf/setting"             : "dev-master"
     },
     "require-dev":{

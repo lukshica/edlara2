@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "42845101595e0738f300779c1d563f8a",
+    "hash": "3fb0f5761902f7618027fc2d9b72fa47",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -92,12 +92,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dflydev/dflydev-markdown.git",
-                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e"
+                "reference": "dee1f7a6b60776a94c10efa8340ccd486ec834b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-markdown/zipball/6baed9b50f29c980795b6656d43722aadb126f7e",
-                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e",
+                "url": "https://api.github.com/repos/dflydev/dflydev-markdown/zipball/dee1f7a6b60776a94c10efa8340ccd486ec834b7",
+                "reference": "dee1f7a6b60776a94c10efa8340ccd486ec834b7",
                 "shasum": ""
             },
             "require": {
@@ -138,12 +138,12 @@
                     "homepage": "http://daringfireball.net"
                 }
             ],
-            "description": "PHP Markdown & Extra",
+            "description": "PHP Markdown & Extra - DEPRECATED",
             "homepage": "http://github.com/dflydev/dflydev-markdown",
             "keywords": [
                 "markdown"
             ],
-            "time": "2013-09-23 12:00:18"
+            "time": "2014-01-06 23:32:02"
         },
         {
             "name": "doctrine/inflector",
@@ -749,12 +749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c472ca9b043c373230ded1363dd05d1478effca4"
+                "reference": "a49d68a0c048718d442855f52c4c68b97d76fd89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c472ca9b043c373230ded1363dd05d1478effca4",
-                "reference": "c472ca9b043c373230ded1363dd05d1478effca4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a49d68a0c048718d442855f52c4c68b97d76fd89",
+                "reference": "a49d68a0c048718d442855f52c4c68b97d76fd89",
                 "shasum": ""
             },
             "require": {
@@ -858,7 +858,66 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-01-06 02:22:05"
+            "time": "2014-01-07 02:54:25"
+        },
+        {
+            "name": "laravelbook/ardent",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravelbook/ardent.git",
+                "reference": "8ac1128e98d930ca34c6e6cd652961fa77653eaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravelbook/ardent/zipball/8ac1128e98d930ca34c6e6cd652961fa77653eaf",
+                "reference": "8ac1128e98d930ca34c6e6cd652961fa77653eaf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~4.1",
+                "illuminate/support": "~4.1",
+                "illuminate/validation": "~4.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LaravelBook\\Ardent": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Max Ehsan",
+                    "email": "contact@laravelbook.com",
+                    "homepage": "http://laravelbook.com/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Igor Santos",
+                    "email": "igorsantos07@gmail.com",
+                    "homepage": "http://www.igorsantos.com.br",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Self-validating smart models for Laravel 4's Eloquent O/RM",
+            "homepage": "http://laravelbook.com/",
+            "keywords": [
+                "Active Record",
+                "activerecord",
+                "database",
+                "eloquent",
+                "framework",
+                "laravel",
+                "orm",
+                "sql",
+                "validation"
+            ],
+            "time": "2013-12-26 02:54:05"
         },
         {
             "name": "monolog/monolog",
@@ -974,16 +1033,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "03ede52a1f360441b5826cb8a798e0d0a919731f"
+                "reference": "21c4cb4301969c7d85aee8a62eefdfa881413af0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/03ede52a1f360441b5826cb8a798e0d0a919731f",
-                "reference": "03ede52a1f360441b5826cb8a798e0d0a919731f",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/21c4cb4301969c7d85aee8a62eefdfa881413af0",
+                "reference": "21c4cb4301969c7d85aee8a62eefdfa881413af0",
                 "shasum": ""
             },
             "require": {
@@ -1016,7 +1075,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2013-12-05 04:13:29"
+            "time": "2014-01-07 05:10:44"
         },
         {
             "name": "nikic/php-parser",
@@ -1434,12 +1493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/foundation.git",
-                "reference": "6c833c11a59b7ea5fda675ba3d20e3d1d2e6dce2"
+                "reference": "1b788674ede7f02ed71b8f43476122a5f792b1d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/foundation/zipball/6c833c11a59b7ea5fda675ba3d20e3d1d2e6dce2",
-                "reference": "6c833c11a59b7ea5fda675ba3d20e3d1d2e6dce2",
+                "url": "https://api.github.com/repos/orchestral/foundation/zipball/1b788674ede7f02ed71b8f43476122a5f792b1d7",
+                "reference": "1b788674ede7f02ed71b8f43476122a5f792b1d7",
                 "shasum": ""
             },
             "require": {
@@ -1500,7 +1559,7 @@
                 "orchestra-platform",
                 "orchestral"
             ],
-            "time": "2013-12-31 03:44:58"
+            "time": "2014-01-07 03:22:58"
         },
         {
             "name": "orchestra/html",
@@ -2815,12 +2874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7"
+                "reference": "8419a7647cffe04a7e2e28bc5bac940d37e42ff4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
-                "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/8419a7647cffe04a7e2e28bc5bac940d37e42ff4",
+                "reference": "8419a7647cffe04a7e2e28bc5bac940d37e42ff4",
                 "shasum": ""
             },
             "require": {
@@ -2859,7 +2918,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-01 08:14:50"
+            "time": "2014-01-06 22:33:02"
         },
         {
             "name": "symfony/css-selector",
@@ -3027,12 +3086,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "6a30cf4f7951794e2179c29b3ce30fb478019cd8"
+                "reference": "f2ab66ab36bbbb0d07ae61637c73283074b91bf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/6a30cf4f7951794e2179c29b3ce30fb478019cd8",
-                "reference": "6a30cf4f7951794e2179c29b3ce30fb478019cd8",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/f2ab66ab36bbbb0d07ae61637c73283074b91bf9",
+                "reference": "f2ab66ab36bbbb0d07ae61637c73283074b91bf9",
                 "shasum": ""
             },
             "require": {
@@ -3074,7 +3133,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-01 09:18:08"
+            "time": "2014-01-06 07:29:39"
         },
         {
             "name": "symfony/filesystem",
@@ -4770,12 +4829,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "711d0b833770264ab9a532267e84db1c9b951a13"
+                "reference": "5f328dce889823f1ec78844427a48da4c2eb6638"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/711d0b833770264ab9a532267e84db1c9b951a13",
-                "reference": "711d0b833770264ab9a532267e84db1c9b951a13",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/5f328dce889823f1ec78844427a48da4c2eb6638",
+                "reference": "5f328dce889823f1ec78844427a48da4c2eb6638",
                 "shasum": ""
             },
             "type": "library",
@@ -4804,7 +4863,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2014-01-05 16:52:16"
+            "time": "2014-01-07 08:31:27"
         },
         {
             "name": "way/laravel-test-helpers",
@@ -4900,6 +4959,7 @@
         "way/generators": 20,
         "rtablada/package-installer": 20,
         "symfony/process": 20,
+        "laravelbook/ardent": 20,
         "philf/setting": 20,
         "codeception/codeception": 20,
         "codeception/aspect-mock": 0,
