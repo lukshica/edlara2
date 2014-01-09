@@ -260,7 +260,7 @@ module.exports = function (grunt) {
                         ascii_only: true
                 },
                 banner: "/*! Edorchestral v<%= pkg.version %> | " +
-                        "(c) 2013-2014 Gnanakeethan Balasubramaniam| " +
+                        "(c) 2013-2014 Grans Group.| " +
                         "License   : GNU/GPL v3 or Later */",
                 compress: {
                         hoist_funs: false,
