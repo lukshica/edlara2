@@ -29,7 +29,7 @@ module.exports = function (grunt) {
                 '<%= options.base %>/builds/css/frontend/less.css',
                 '<%= options.base %>/builds/css/frontend/scss.css',
                 '<%= options.css.base %>/frontend/*.css',
-                '<%= options.themebase %>/frontend/*.css'],
+                '<%= options.themebase %>/assets/css/frontend/*.css'],
 
                 // Name of the concatenated CSS file for front End
                 concat_site: '<%= options.base %>/builds/css/frontend/compiled.css',
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                 '<%= options.base %>/builds/css/backend/less.css',
                 '<%= options.base %>/builds/css/backend/scss.css',
                 '<%= options.css.base %>/backend/*.css',
-                '<%= options.themebase %>/backend/*.css'],
+                '<%= options.themebase %>/assets/css/backend/*.css'],
 
                 // Name of the concatenated CSS file for Backend
                 concat_dash: '<%= options.base %>/builds/css/backend/compiled.css',
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
                 './vendor/twbs/bootstrap/js/tooltip.js',
                 './vendor/twbs/bootstrap/js/*.js',
                 '<%= options.js.base %>/frontend/*.js',
-                '<%= options.themebase %>/assets/frontend/*.js'
+                '<%= options.themebase %>/assets/js/frontend/*.js'
                 ],
 
                 //JSHint Checking for JS Files
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
                 '<%= options.js.base %>/dependencies/jquery-2.0.3.js',
                 'vendor/twbs/bootstrap/js/*.js',
                 '<%= options.js.base %>/backend/*.js',
-                '<%= options.themebase %>/assets/backend/*.js'
+                '<%= options.themebase %>/assets/js/backend/*.js'
                 ],
 
 
@@ -229,7 +229,10 @@ module.exports = function (grunt) {
         // Minify and concatenate CSS files
         cssmin: {
             options:{
-                keepSpecialComments:0
+                keepSpecialComments:0,
+                banner: "/*! Edorchestral v<%= pkg.version %> | " +
+                        "(c) 2013-2014 Grans Group.| " +
+                        "License   : GNU/GPL v3 or Later */"
             },
             minify_site: {
                 src: '<%= options.css.concat_site %>',
