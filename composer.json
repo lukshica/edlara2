@@ -12,6 +12,7 @@
         "hybridauth/hybridauth"     : "dev-master",
         "way/generators"            : "dev-master",
         "rtablada/package-installer": "dev-master",
+            "artdarek/neo4j-4-laravel": "dev-master",
         "symfony/process"           : "2.4.*@dev",
         "laravelbook/ardent"        : "dev-master",
         "philf/setting"             : "dev-master"
