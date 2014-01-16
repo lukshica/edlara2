@@ -82,6 +82,14 @@ return array(
             'password' => '',
             'prefix'   => '',
         ),
+        'neo4j' => [
+                'default' => [
+                    'host'     => 'localhost',
+                    'port'     => 7474,
+                    'username' => null,
+                    'password' => null,
+                ],
+        ],
 
     ),
 
