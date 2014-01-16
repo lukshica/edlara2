@@ -131,6 +131,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Rtablada\PackageInstaller\PackageInstallerServiceProvider',
         'Philf\Setting\SettingServiceProvider',
+        'Artdarek\Neo4j\Neo4jServiceProvider',
 
 
         'Edlara\EdlaraServiceProvider',
