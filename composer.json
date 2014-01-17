@@ -35,8 +35,8 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		],
-        "psr-0":{
-            "Edlara":"app/library"
+        "psr-4":{
+            "Edlara\\":"app/library/Edlara"
         }
 	},
 	"scripts": {
