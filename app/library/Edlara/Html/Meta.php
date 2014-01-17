@@ -86,7 +86,19 @@ class Meta {
      */
     public function author($author=null){
 
+        $this->setAuthor();
         return $this->html->meta('author',isset($author)?$author:$this->author);
     }
 
+
+    public function refresh($time=5){
+        try {
+            $isnt=is_int($time);
+            if(!$isnt):throw new \Exception("Error Processing Request", 1);
+            endif;
+        } catch (\Exception $e) {
+            return "Unabe To Process Request.";
+        }
+        return $this->html->meta(null,$time,"refresh");
+    }
 }
