@@ -5,7 +5,6 @@
     {{
         HTML::title()
     }}
-    {{"\n"}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Grans Group">
     <meta name="description" content="Edlara Learning Management">
