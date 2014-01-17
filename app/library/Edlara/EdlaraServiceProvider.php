@@ -29,6 +29,9 @@ class EdlaraServiceProvider extends ServiceProvider {
     public function register()
     {
         //
+        \App::bind('meta',function(){
+            return new \Edlara\Html\Meta(new \Illuminate\Html\HtmlBuilder);
+        });
     }
 
     /**
@@ -38,7 +41,7 @@ class EdlaraServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array();
+        return array('meta');
     }
 
 }
