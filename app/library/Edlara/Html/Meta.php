@@ -43,7 +43,7 @@ class Meta {
      * @return void
      */
     public function setAuthor($author="Grans Group"){
-        $eventedauthor = Event::fire('meta.setauthor', $author);
+        $eventedauthor = Event::fire('meta.author', $author);
         $this->author = isset($eventedauthor[0])?$eventedauthor[0]:$author;
     }
 
@@ -54,7 +54,8 @@ class Meta {
      * @return void
      */
     public function setCharset($charset="UTF-8"){
-        $this->charset = $charset;
+        $eventedcharset = Event::fire('meta.charset',$charset);
+        $this->charset = $eventedcharset?:$charset;
     }
 
 
@@ -65,8 +66,7 @@ class Meta {
      */
     public function getAuthor()
     {
-        $author = $this->author;
-        $eventedauthor = Event::fire('meta.setauthor', $author);
+        $eventedauthor = Event::fire('meta.author', $this->author);
         return isset($eventedauthor[0])?$eventedauthor[0]:$this->author;
     }
 
@@ -76,6 +76,8 @@ class Meta {
      * @return String
      */
     public function getCharset(){
+        $eventedcharset = Event::fire('meta.charset',$this->charset);
+        $this->charset = $eventedcharset?:$this->charset;
         return $this->charset;
     }
 
