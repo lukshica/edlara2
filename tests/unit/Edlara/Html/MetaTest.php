@@ -56,4 +56,19 @@ class MetaTest extends TestCase {
         $this->mock->setCharset("US-ENC");
         $this->assertNotEquals("US-ENC",$this->mock->getCharset());
     }
+
+    public function testAuthor(){
+        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
+        $this->mock->shouldReceive('macro')->once()->andReturn(null);
+        $this->mock->shouldReceive('meta')->once()
+            ->with('author','TestingAuthor')
+            ->andReturn('<meta name=\'author\' content=\'TestingAuthor\' >');
+
+        $this->html = new Edlara\Html\Meta($this->mock);
+
+        $this->result=$this->html->author("TestingAuthor");
+        $this->assertEquals('<meta name=\'author\' content=\'TestingAuthor\' >',
+            $this->result);
+
+    }
 }
