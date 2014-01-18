@@ -22,8 +22,8 @@ class Meta {
      * @param  \Illuminate\Html\HtmlBuilder
      * @return void
      */
-    public function __construct(Html $html){
-        $this->html = $html;
+    public function __construct(Html $html=null){
+        $this->html = $html?:new Html;
 
         $this->html->macro('meta',function($name=null,$content=null,$http=null,$charset=null){
             if(isset($charset)): return "<meta charset=\"".$charset."\" >";
@@ -65,6 +65,7 @@ class Meta {
      */
     public function getAuthor()
     {
+        $author = $this->author;
         $eventedauthor = Event::fire('meta.setauthor', $author);
         return isset($eventedauthor[0])?$eventedauthor[0]:$this->author;
     }
@@ -84,8 +85,6 @@ class Meta {
      * @return String
      */
     public function author($author=null){
-
-        $this->setAuthor();
         return $this->html->meta('author',isset($author)?$author:$this->author);
     }
 
