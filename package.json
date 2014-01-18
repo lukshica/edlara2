@@ -1,7 +1,8 @@
 {
   "name": "edorchestral",
   "description": "",
-  "homepage": "//",
+  "homepage": "http://github.com/grans/edlara",
+  "repository":"http://github.com/grans/edlara",
   "version": "2.0.0-dev",
   "author": {
     "name": "Gnanakeethan Balasubramaniam",

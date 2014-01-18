@@ -7,13 +7,21 @@ class MetaTest extends TestCase {
     public function after(){
         m::close();
         unset($this->mock);
+        unset($this->html);
     }
 
     public function testConstruct(){
 
+        // Mock the instance of HTMLBuilder
         $this->mock =  m::mock('Illuminate\Html\HtmlBuilder');
+        // Add initial mock statement
         $this->mock->shouldReceive('macro')->once()->andReturn(null);
+
+        // Try to create a instance of Edlara\Html\Meta with mock
         $this->html = new Edlara\Html\Meta($this->mock);
+
+        // Assert that we do have a functional instance of Edlara\Html\Meta
+        $this->assertInstanceOf('Edlara\Html\Meta',$this->html);
 
     }
 
