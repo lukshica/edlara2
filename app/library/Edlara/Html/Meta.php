@@ -19,8 +19,7 @@ class Meta {
     /**
      * Constructing the dependencies
      *
-     * @param  \Illuminate\Html\HtmlBuilder $html
-     * @param  \Illuminate\Support\Facades\Event
+     * @param  \Illuminate\Html\HtmlBuilder
      * @return void
      */
     public function __construct(Html $html){
@@ -51,7 +50,7 @@ class Meta {
     /**
      * Set the Default Charset
      *
-     * @param charset
+     * @param String
      * @return void
      */
     public function setCharset($charset="UTF-8"){
