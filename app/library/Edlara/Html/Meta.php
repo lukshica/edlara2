@@ -22,8 +22,8 @@ class Meta {
      * @param  \Illuminate\Html\HtmlBuilder
      * @return void
      */
-    public function __construct(Html $html){
-        $this->html = $html;
+    public function __construct(Html $html=null){
+        $this->html = $html?:new Html;
 
         $this->html->macro('meta',function($name=null,$content=null,$http=null,$charset=null){
             if(isset($charset)): return "<meta charset=\"".$charset."\" >";
@@ -43,7 +43,7 @@ class Meta {
      * @return void
      */
     public function setAuthor($author="Grans Group"){
-        $eventedauthor = Event::fire('meta.setauthor', $author);
+        $eventedauthor = Event::fire('meta.author', $author);
         $this->author = isset($eventedauthor[0])?$eventedauthor[0]:$author;
     }
 
@@ -54,7 +54,8 @@ class Meta {
      * @return void
      */
     public function setCharset($charset="UTF-8"){
-        $this->charset = $charset;
+        $eventedcharset = Event::fire('meta.charset',$charset);
+        $this->charset = $eventedcharset?:$charset;
     }
 
 
@@ -65,7 +66,7 @@ class Meta {
      */
     public function getAuthor()
     {
-        $eventedauthor = Event::fire('meta.setauthor', $author);
+        $eventedauthor = Event::fire('meta.author', $this->author);
         return isset($eventedauthor[0])?$eventedauthor[0]:$this->author;
     }
 
@@ -75,6 +76,8 @@ class Meta {
      * @return String
      */
     public function getCharset(){
+        $eventedcharset = Event::fire('meta.charset',$this->charset);
+        $this->charset = $eventedcharset?:$this->charset;
         return $this->charset;
     }
 
@@ -84,8 +87,6 @@ class Meta {
      * @return String
      */
     public function author($author=null){
-
-        $this->setAuthor();
         return $this->html->meta('author',isset($author)?$author:$this->author);
     }
 
