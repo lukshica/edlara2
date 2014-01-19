@@ -97,7 +97,7 @@ class Meta {
             if(!$isnt):throw new \Exception("Error Processing Request", 1);
             endif;
         } catch (\Exception $e) {
-            return "Unabe To Process Request.";
+            return "Unable To Process Request.";
         }
         return $this->html->meta(null,$time,"refresh");
     }
