@@ -9,19 +9,19 @@ module.exports = function (grunt) {
         // User editable project settings & variables
         options: {
             // Base path to your assets folder
-            base: 'app/assets',
+            base: './app/assets',
 
             // Theme Base
-            themebase: 'public/themes/default',
+            themebase: './public/themes/default',
 
             // Published assets path
-            publish: 'public/build',
+            publish: './public/build',
 
 
             // CSS settings
             css: {
                 // base path to the CSS folder
-                base: 'app/assets/css',
+                base: './app/assets/css',
 
 
                 // CSS files in order you'd like them concatenated and minified
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
                 //Files to Compile into one file
                 files_dash: [
                 '<%= options.js.base %>/dependencies/jquery-2.0.3.js',
-                'vendor/twbs/bootstrap/js/*.js',
+                './vendor/twbs/bootstrap/js/*.js',
                 '<%= options.js.base %>/backend/*.js',
                 '<%= options.themebase %>/assets/js/backend/*.js'
                 ],
@@ -97,9 +97,9 @@ module.exports = function (grunt) {
 
             // scss Settings
             scss: {
-                base: 'app/assets/scss',                            // Base path to you scss folder
-                file_site: 'app/assets/scss/frontend/main.scss',                          // scss file (ideally, one file which contains imports)
-                file_dash: 'app/assets/scss/backend/main.scss',                          // scss file (ideally, one file which contains imports)
+                base: './app/assets/scss',                            // Base path to you scss folder
+                file_site: './app/assets/scss/frontend/main.scss',                          // scss file (ideally, one file which contains imports)
+                file_dash: './app/assets/scss/backend/main.scss',                          // scss file (ideally, one file which contains imports)
                 compiled_site: '<%= options.base %>/builds/css/frontend/scss.css', // Name of the compiled scss file
                 compiled_dash: '<%= options.base %>/builds/css/backend/scss.css' // Name of the compiled scss file
             },
@@ -137,10 +137,10 @@ module.exports = function (grunt) {
 
         phpunit: {
             classes: {
-                dir: 'app/tests'
+                dir: './app/tests'
             },
             options: {
-                bin: 'bin/phpunit',
+                bin: './bin/phpunit',
             }
         },
 
@@ -149,25 +149,25 @@ module.exports = function (grunt) {
                 options: {
                     stdout: true
                 },
-                command: 'bin/codecept run unit'
+                command: './bin/codecept run unit'
             },
             acceptance:{
                 options:{
                     stdout:true
                 },
-                command:'bin/codecept run acceptance'
+                command:'./bin/codecept run acceptance'
             },
             functional:{
                 options:{
                     stdout:true
                 },
-                command:'bin/codecept run functional'
+                command:'./bin/codecept run functional'
             },
             all:{
                 options:{
                     stdout:true
                 },
-                command:'bin/codecept run'
+                command:'./bin/codecept run'
             }
         },
 
@@ -299,8 +299,8 @@ module.exports = function (grunt) {
                     livereload:true
                 },
                 files:[
-                    'app/**/*.blade.php',
-                    'app/views/**/*.php'
+                    './app/**/*.blade.php',
+                    './app/views/**/*.php'
                     ],
                 tasks:[]
             },
@@ -309,8 +309,8 @@ module.exports = function (grunt) {
                     livereload:true
                 },
                 files:[
-                    'app/**/*.scss',
-                    'public/**/*.scss'
+                    './app/**/*.scss',
+                    './public/**/*.scss'
                 ],
                 tasks:['sass','concat:css','cssmin']
             },
@@ -319,8 +319,8 @@ module.exports = function (grunt) {
                     livereload:true
                 },
                 files:[
-                    'app/**/*.less',
-                    'public/**/*.less'
+                    './app/**/*.less',
+                    './public/**/*.less'
                 ],
                 tasks:['less','concat:css','cssmin']
             },
@@ -329,8 +329,8 @@ module.exports = function (grunt) {
                     livereload:true
                 },
                 files:[
-                    'app/assets/css/**/*.css',
-                    'public/**/*.css'
+                    './app/assets/css/**/*.css',
+                    './public/**/*.css'
                 ],
                 tasks:['concat:css','cssmin']
             },
@@ -339,8 +339,8 @@ module.exports = function (grunt) {
                     livereload:true
                 },
                 files:[
-                    'app/**/*.js',
-                    'public/**/*.js'
+                    './app/**/*.js',
+                    './public/**/*.js'
                 ],
                 tasks:['concat:js','uglify']
             },
@@ -348,23 +348,23 @@ module.exports = function (grunt) {
                 options:{
                     livereload:true
                 },
-                files:['app/**/*.html'],
+                files:['./app/**/*.html'],
                 tasks:[]
             },
             watchtest:{
-                files:['app/**/**.php','!app/views/**/*.php'],
+                files:['./app/**/**.php','!app/views/**/*.php'],
                 tasks:['phpunit']
             },
             watchunit:{
-                files:['tests/unit/**/**.php'],
+                files:['./tests/unit/**/**.php'],
                 tasks:['shell:unit']
             },
             watchfunctional:{
-                files:['tests/functional/**/**.php'],
+                files:['./tests/functional/**/**.php'],
                 tasks:['shell:functional']
             },
             watchacceptance:{
-                files:['tests/acceptance/**/**.php'],
+                files:['./tests/acceptance/**/**.php'],
                 tasks:['shell:acceptance']
             },
         }
