@@ -17,6 +17,16 @@ class Meta {
     protected $charset="UTF-8";
 
     /**
+     * Description
+     */
+    protected $description = "Edlara Educational Package";
+
+    /**
+     * Generator
+     */
+    protected $generator = "Edlara";
+
+    /**
      * Constructing the dependencies
      *
      * @param  \Illuminate\Html\HtmlBuilder
@@ -39,7 +49,7 @@ class Meta {
     /**
      * Set the Default Author
      *
-     * @param author
+     * @param String $author set the default author
      * @return void
      */
     public function setAuthor($author="Grans Group"){
@@ -50,7 +60,7 @@ class Meta {
     /**
      * Set the Default Charset
      *
-     * @param String
+     * @param String $charset set the default charset
      * @return void
      */
     public function setCharset($charset="UTF-8"){
@@ -62,7 +72,7 @@ class Meta {
     /**
      * Get the Default Author
      *
-     * @return String
+     * @return String return the default author
      */
     public function getAuthor()
     {
@@ -73,32 +83,77 @@ class Meta {
     /**
      * Get the Default Charset
      *
-     * @return String
+     * @return String returns the default charset
      */
     public function getCharset(){
         $eventedcharset = Event::fire('meta.charset',$this->charset);
-        $this->charset = $eventedcharset?:$this->charset;
+        $this->charset = $eventedcharset[0]?:$this->charset;
         return $this->charset;
     }
 
     /**
-     * Return the Author Meta Tag
+     * Set the Default Description
      *
-     * @return String
+     * @param String $description The Default Description
+     */
+    public function setDescription($description=null)
+    {
+        $eventeddesc = Event::fire('meta.description',$this->description);
+        $this->description = $eventeddesc[0]?:$this->description;
+    }
+
+
+    /**
+     * Author Meta Tag
+     *
+     * @param String $author Set The author name Temporarily and return meta.
+     * @return String the meta tag for author
      */
     public function author($author=null){
         return $this->html->meta('author',isset($author)?$author:$this->author);
     }
 
 
+    /**
+     * Refresh Meta Tag
+     *
+     * @param int $time the time in seconds.
+     * @return String meta tag for refresh counted by time
+     */
     public function refresh($time=5){
-        try {
-            $isnt=is_int($time);
-            if(!$isnt):throw new \Exception("Error Processing Request", 1);
-            endif;
-        } catch (\Exception $e) {
-            return "Unabe To Process Request.";
+        $time = int ($time);
+        if(!is_int($time)){
+            return $this->html->meta(null,$time=5,"refresh");
         }
         return $this->html->meta(null,$time,"refresh");
+    }
+
+    /**
+     * Charset Meta Tag
+     *
+     * @param String $charset the overriding charset
+     * @return String the meta tag for charset
+     */
+    public function charset($charset=null){
+        return $this->html->meta(null,null,null,$charset?:$this->charset);
+    }
+
+    /**
+     * Description Meta tag
+     *
+     * @param String $description overrides
+     * @return String the meta tag for description
+     */
+    public function description($description=null){
+        return $this->html->meta('description',$description?:$this->description);
+    }
+
+    /**
+     * Generator Meta tag
+     *
+     * @param String $generator generator override
+     */
+    public function generator($generator=null){
+        return $this->html->meta('generator',$generator?:$this->generator);
     }
 }
