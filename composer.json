@@ -10,9 +10,10 @@
 		"orchestra/story"           : "2.1.*",
 		"facebook/php-sdk"          : "@stable",
         "hybridauth/hybridauth"     : "dev-master",
+        "orchestra/debug"           : "2.1.*",
         "way/generators"            : "dev-master",
         "rtablada/package-installer": "dev-master",
-            "artdarek/neo4j-4-laravel": "dev-master",
+        "artdarek/neo4j-4-laravel"  : "dev-master",
         "symfony/process"           : "2.4.*@dev",
         "laravelbook/ardent"        : "dev-master",
         "philf/setting"             : "dev-master"
