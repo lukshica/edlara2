@@ -87,7 +87,7 @@ class Meta {
      */
     public function getCharset(){
         $eventedcharset = Event::fire('meta.charset',$this->charset);
-        $this->charset = $eventedcharset[0]?:$this->charset;
+        $this->charset = isset($eventedcharset[0])?$eventedcharset[0]:$this->charset;
         return $this->charset;
     }
 
@@ -99,7 +99,7 @@ class Meta {
     public function setDescription($description=null)
     {
         $eventeddesc = Event::fire('meta.description',$this->description);
-        $this->description = $eventeddesc[0]?:$this->description;
+        $this->description = isset($eventeddesc[0])?$eventeddesc[0]:$this->description;
     }
 
 
@@ -121,7 +121,7 @@ class Meta {
      * @return String meta tag for refresh counted by time
      */
     public function refresh($time=5){
-        $time = int ($time);
+        $time = (int)$time;
         if(!is_int($time)){
             return $this->html->meta(null,$time=5,"refresh");
         }
