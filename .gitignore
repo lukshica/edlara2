@@ -4,6 +4,8 @@
 
 #Build System
 **/builds/*
+/public/build/
+
 
 #Binary files
 /bin/
