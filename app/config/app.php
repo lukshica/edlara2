@@ -125,6 +125,7 @@ return array(
 
         'Orchestra\Foundation\ConsoleSupportServiceProvider',
         'Orchestra\Foundation\FoundationServiceProvider',
+        'Orchestra\Debug\CommandServiceProvider',
 
 
 
@@ -203,6 +204,7 @@ return array(
         'URL'             => 'Illuminate\Support\Facades\URL',
         'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
+        'Profiler'        => 'Orchestra\Debug\Facades\Profiler',
 
         'Meta'            => 'Edlara\Support\Facades\Meta',
     ),
