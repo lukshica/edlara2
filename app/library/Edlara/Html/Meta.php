@@ -104,7 +104,7 @@ class Meta {
     public function setDescription($description=null)
     {
         $eventeddesc = Event::fire('meta.description',$this->description);
-        $this->description = isset($eventeddesc[0])?$eventeddesc[0]:$this->description;
+        $this->description = isset($eventeddesc[0])?$eventeddesc[0]:$description;
     }
 
     /**

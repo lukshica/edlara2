@@ -57,3 +57,7 @@ dwsync.xml
 intermediate
 publish
 .idea
+
+
+#Arcanist
+.arcconfig
