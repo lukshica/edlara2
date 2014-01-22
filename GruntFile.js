@@ -330,7 +330,7 @@ module.exports = function (grunt) {
                 },
                 files:[
                     './app/assets/css/**/*.css',
-                    './public/**/*.css'
+                    './public/themes/**/*.css'
                 ],
                 tasks:['concat:css','cssmin']
             },
@@ -353,7 +353,7 @@ module.exports = function (grunt) {
             },
             watchtest:{
                 files:['./app/**/**.php','!app/views/**/*.php'],
-                tasks:['phpunit']
+                tasks:['shell:all']
             },
             watchunit:{
                 files:['./tests/unit/**/**.php'],
