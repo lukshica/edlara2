@@ -85,6 +85,8 @@ class MetaTest extends TestCase {
         $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
         $this->mock->shouldReceive('macro')->once()->andReturn(null);
         $this->mock->shouldReceive('meta')->once()
+
+
             ->with(null,'5',"refresh")
             ->andReturn('<meta http-equiv="refresh" content="5" >');
 
