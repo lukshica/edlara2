@@ -27,6 +27,11 @@ class Meta {
     protected $generator = "Edlara";
 
     /**
+     * Viewport
+     */
+    protected $viewport = "width=device-width, initial-scale=1.0";
+
+    /**
      * Constructing the dependencies
      *
      * @param  \Illuminate\Html\HtmlBuilder
@@ -102,6 +107,42 @@ class Meta {
         $this->description = isset($eventeddesc[0])?$eventeddesc[0]:$this->description;
     }
 
+    /**
+     * Set the viewport config
+     *
+     * @param String $viewport The Default View Port
+     */
+    public function setViewPort($viewport=null){
+        $eventedviewport = Event::fire('meta.viewport',$this->viewport);
+        $this->viewport = isset($eventedviewport[0])?$eventedviewport[0]:$this->viewport;
+    }
+
+    /**
+     * Append to current viewport
+     *
+     * @param String $viewportap The Appended String
+     */
+    public function appendViewPort($viewportap=""){
+        $this->viewport .= $viewportap;
+    }
+
+    /**
+     * Get the current Description
+     *
+     * @return String The Current Description
+     */
+    public function getDescription(){
+        return $this->description;
+    }
+
+    /**
+     * Get the current viewport vars
+     *
+     * @return String The current Viewport config
+     */
+    public function getViewPort(){
+        return $this->viewport;
+    }
 
     /**
      * Author Meta Tag
@@ -155,5 +196,15 @@ class Meta {
      */
     public function generator($generator=null){
         return $this->html->meta('generator',$generator?:$this->generator);
+    }
+
+
+    /**
+     * Viewport Meta Tag
+     *
+     * @param String $viewport viewport override
+     */
+    public function viewport($viewport=null){
+        return $this->html->meta('viewport',$viewport?:$this->viewport);
     }
 }
