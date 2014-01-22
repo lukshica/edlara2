@@ -85,6 +85,8 @@ class MetaTest extends TestCase {
         $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
         $this->mock->shouldReceive('macro')->once()->andReturn(null);
         $this->mock->shouldReceive('meta')->once()
+
+
             ->with(null,'5',"refresh")
             ->andReturn('<meta http-equiv="refresh" content="5" >');
 
@@ -93,5 +95,60 @@ class MetaTest extends TestCase {
         $this->result = $this->html->refresh(5);
 
         $this->assertEquals('<meta http-equiv="refresh" content="5" >',$this->result);
+    }
+
+    public function testSetGetDescription(){
+        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
+        $this->mock->shouldReceive('macro')->once()->andReturn(null);
+        $this->html = new Edlara\Html\Meta($this->mock);
+
+        $this->html->setDescription("Custom Desc");
+
+        $this->assertEquals("Custom Desc",$this->html->getDescription());
+    }
+
+    public function testSetGetDescriptionWithEvent(){
+        Event::listen('meta.description', function(){
+            return "Custom Extended Desc";
+        });
+
+        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
+        $this->mock->shouldReceive('macro')->once()->andReturn(null);
+        $this->html = new Edlara\Html\Meta($this->mock);
+
+        $this->html->setDescription("Custom Desc");
+
+        $this->assertNotEquals("Custom Desc",$this->html->getDescription());
+    }
+
+
+    public function testGenerator(){
+        $html = '<meta name="generator" content="Laravel" >';
+        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
+        $this->mock->shouldReceive('macro')->once()->andReturn(null);
+        $this->mock->shouldReceive('meta')->once()
+            ->with("generator","Laravel")
+            ->andReturn($html);
+
+        $this->html = new Edlara\Html\Meta($this->mock);
+        $this->result=$this->html->generator("Laravel");
+
+        $this->assertEquals($html,$this->result);
+
+    }
+    public function testViewport(){
+        $view = "Content:34;";
+        $html = '<meta name="viewport" content="'.$view.'" >';
+        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
+        $this->mock->shouldReceive('macro')->once()->andReturn(null);
+        $this->mock->shouldReceive('meta')->once()
+            ->with("viewport",$view)
+            ->andReturn($html);
+
+        $this->html = new Edlara\Html\Meta($this->mock);
+        $this->result=$this->html->viewport($view);
+
+        $this->assertEquals($html,$this->result);
+
     }
 }
