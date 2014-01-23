@@ -108,6 +108,15 @@ class Meta {
     }
 
     /**
+     * Get the current Description
+     *
+     * @return String The Current Description
+     */
+    public function getDescription(){
+        return $this->description;
+    }
+
+    /**
      * Set the viewport config
      *
      * @param String $viewport The Default View Port
@@ -124,15 +133,6 @@ class Meta {
      */
     public function appendViewPort($viewportap=""){
         $this->viewport .= $viewportap;
-    }
-
-    /**
-     * Get the current Description
-     *
-     * @return String The Current Description
-     */
-    public function getDescription(){
-        return $this->description;
     }
 
     /**
