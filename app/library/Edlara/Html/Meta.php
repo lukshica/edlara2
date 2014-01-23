@@ -32,6 +32,11 @@ class Meta {
     protected $viewport = "width=device-width, initial-scale=1.0";
 
     /**
+     * Keywords
+     */
+    protected $keywords = array();
+
+    /**
      * Constructing the dependencies
      *
      * @param  \Illuminate\Html\HtmlBuilder
@@ -144,6 +149,48 @@ class Meta {
         return $this->viewport;
     }
 
+
+    /**
+     * Set the Keywords
+     *
+     * @param Array $keywords The Keywords list to setup.
+     * @return void
+     */
+    public function setKeywords($keywords=array()){
+        $this->keywords = array_unique(array_merge($this->keywords,$keywords));
+    }
+
+    /**
+     * Add a Keyword
+     *
+     * @param String $keyword Keyword to add
+     * @return void
+     */
+    public function addKeyword($keyword=""){
+        $this->keywords = array_unique(array_merge($this->keywords,[$keyword]));
+    }
+
+    public function removeKeyword($keyword=""){
+        if(in_array($keyword, array_unique($this->keywords))){
+            $pin = array_search($keyword,array_unique(($this->keywords)));
+            unset($this->keywords[$pin]);
+        }
+    }
+
+    /**
+     * Flush the Keywords List.
+     */
+    public function flushKeywords(){
+        $this->keywords=array();
+    }
+
+    /**
+     * Get the Keywords list
+     */
+    public function getKeywords(){
+        return array_unique($this->keywords);
+    }
+
     /**
      * Author Meta Tag
      *
@@ -206,5 +253,25 @@ class Meta {
      */
     public function viewport($viewport=null){
         return $this->html->meta('viewport',$viewport?:$this->viewport);
+    }
+
+    /**
+     * Keywords Meta Tag
+     *
+     * @param Array $keywords The List of Keywords to add at last
+     */
+    public function keywords($keywords=array()){
+        $keywords = array_unique(array_merge($this->keywords,$keywords));
+        return $this->html->meta('keywords',implode(',', $keywords));
+    }
+
+
+    /**
+     * Robots Meta Tag
+     *
+     * @param String $option
+     */
+    public function robots($robots){
+        return $this->html->meta('robots',$robots);
     }
 }
