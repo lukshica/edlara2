@@ -207,6 +207,7 @@ return array(
         'Profiler'        => 'Orchestra\Debug\Facades\Profiler',
 
         'Meta'            => 'Edlara\Support\Facades\Meta',
+        'OG'              => 'Edlara\Support\Facades\OG',
     ),
 
 );
