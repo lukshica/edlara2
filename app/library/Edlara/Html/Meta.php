@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Event;
 class Meta {
 
     /**
+     * Site Name
+     */
+    protected $sitename="Edlara";
+
+
+    /**
      * Author
      */
     protected $author="Grans Group";
@@ -44,6 +50,8 @@ class Meta {
      */
     public function __construct(Html $html=null){
         $this->html = $html?:new Html;
+
+        $this->sitename=\Orchestra\Support\Facades\App::memory()->get("site.name", "Edlara");
 
         $this->html->macro('meta',function($name=null,$content=null,$http=null,$charset=null){
             if(isset($charset)): return "<meta charset=\"".$charset."\" >";
