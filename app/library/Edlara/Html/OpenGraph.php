@@ -34,6 +34,12 @@ class OpenGraph{
      */
     protected $title = "Edlara";
 
+    /**
+     * Construct Instance
+     *
+     * @param Object $html Illuminate\Html\HtmlBuilder
+     * @return void
+     */
     private function __construct(Html $html=null){
         $this->html = isset($html)?$html:new Html;
 
@@ -66,6 +72,12 @@ class OpenGraph{
         });
         // self::$_instance =$this;
     }
+
+    /**
+     * Maintain a Single Instance
+     *
+     * @return Object SELF
+     */
     public static function getInstance(){
         if(!is_object(self::$_instance)){
             return self::$_instance = new self;
@@ -73,15 +85,32 @@ class OpenGraph{
         return self::$_instance;
     }
 
-
+    /**
+     * OpenGraph Tag for Site name
+     *
+     * @param String $sitename the preferred site name. will be overridden by
+     *          Event
+     * @return String OpenGraph tag for Site name
+     */
     public function sitename($sitename=""){
-        return $this->html->OpenGraph("site_name",$sitename?:self::__get('sitename'));
+        return $this->html->OpenGraph("site_name",
+                        $sitename?:self::__get('sitename'));
     }
 
+    /**
+     * OpenGraph Tag for Type
+     *
+     * @return String OpenGraph tag for Type
+     */
     public function base(){
         return $this->html->OpenGraph("type","website");
     }
 
+    /**
+     * OpenGraph Tag for Title
+     *
+     * @param String $title Preferred Title for OpenGraph. overridden by Event.
+     */
     public function title($title=null){
         return $this->html->OpenGraph("title",$title?:self::__get('title'));
     }
