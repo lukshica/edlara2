@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Event;
 
 class Meta {
 
+
+    /**
+     * HTML Object
+     */
+    private $html=null;
+
     /**
      * Site Name
      */
@@ -64,119 +70,6 @@ class Meta {
     }
 
 
-    /**
-     * Set the Default Author
-     *
-     * @param String $author set the default author
-     * @return void
-     */
-    public function setAuthor($author="Grans Group"){
-        $eventedauthor = Event::fire('meta.author', $author);
-        $this->author = isset($eventedauthor[0])?$eventedauthor[0]:$author;
-    }
-
-    /**
-     * Set the Default Charset
-     *
-     * @param String $charset set the default charset
-     * @return void
-     */
-    public function setCharset($charset="UTF-8"){
-        $eventedcharset = Event::fire('meta.charset',$charset);
-        $this->charset = $eventedcharset?:$charset;
-    }
-
-
-    /**
-     * Get the Default Author
-     *
-     * @return String return the default author
-     */
-    public function getAuthor()
-    {
-        $eventedauthor = Event::fire('meta.author', $this->author);
-        return isset($eventedauthor[0])?$eventedauthor[0]:$this->author;
-    }
-
-    /**
-     * Get the Default Charset
-     *
-     * @return String returns the default charset
-     */
-    public function getCharset(){
-        $eventedcharset = Event::fire('meta.charset',$this->charset);
-        $this->charset = isset($eventedcharset[0])?$eventedcharset[0]:$this->charset;
-        return $this->charset;
-    }
-
-    /**
-     * Set the Default Description
-     *
-     * @param String $description The Default Description
-     */
-    public function setDescription($description=null)
-    {
-        $eventeddesc = Event::fire('meta.description',$this->description);
-        $this->description = isset($eventeddesc[0])?$eventeddesc[0]:$description;
-    }
-
-    /**
-     * Get the current Description
-     *
-     * @return String The Current Description
-     */
-    public function getDescription(){
-        return $this->description;
-    }
-
-    /**
-     * Set the viewport config
-     *
-     * @param String $viewport The Default View Port
-     */
-    public function setViewPort($viewport=null){
-        $eventedviewport = Event::fire('meta.viewport',$this->viewport);
-        $this->viewport = isset($eventedviewport[0])?$eventedviewport[0]:$this->viewport;
-    }
-
-    /**
-     * Append to current viewport
-     *
-     * @param String $viewportap The Appended String
-     */
-    public function appendViewPort($viewportap=""){
-        $this->viewport .= $viewportap;
-    }
-
-    /**
-     * Get the current viewport vars
-     *
-     * @return String The current Viewport config
-     */
-    public function getViewPort(){
-        return $this->viewport;
-    }
-
-
-    /**
-     * Set the Keywords
-     *
-     * @param Array $keywords The Keywords list to setup.
-     * @return void
-     */
-    public function setKeywords($keywords=array()){
-        $this->keywords = array_unique(array_merge($this->keywords,$keywords));
-    }
-
-    /**
-     * Add a Keyword
-     *
-     * @param String $keyword Keyword to add
-     * @return void
-     */
-    public function addKeyword($keyword=""){
-        $this->keywords = array_unique(array_merge($this->keywords,[$keyword]));
-    }
 
     public function removeKeyword($keyword=""){
         if(in_array($keyword, array_unique($this->keywords))){
@@ -192,12 +85,6 @@ class Meta {
         $this->keywords=array();
     }
 
-    /**
-     * Get the Keywords list
-     */
-    public function getKeywords(){
-        return array_unique($this->keywords);
-    }
 
     /**
      * Author Meta Tag
@@ -281,5 +168,27 @@ class Meta {
      */
     public function robots($robots){
         return $this->html->meta('robots',$robots);
+    }
+
+    /**
+     * Magic Get Method to replace Native Access Methods
+     */
+    public function __get($name){
+        $eventedget = Event::fire("meta.".$name,$this->{$name});
+        $final= $eventedget[0]?:$this->{$name};
+        if($name!== "html"){
+        return $this->{$name}?:$final;
+        }
+        else{
+            return $final;
+        }
+    }
+
+    /**
+     * Magic Set Method to replace Native Access Methods
+     */
+    public function __set($name,$value=null){
+        $eventedset = Event::fire("meta.".$name,$value);
+        return $this->{$name}=isset($eventedset[0])?$eventedset[0]:$this->{$name};
     }
 }
