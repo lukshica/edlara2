@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Event;
 class OpenGraph{
 
     /**
+     * Instance
+     */
+    private static $_instance;
+    /**
      * Site Name
      */
     protected $sitename="Edlara";
@@ -30,7 +34,7 @@ class OpenGraph{
      */
     protected $title = "Edlara";
 
-    public function __construct(Html $html=null){
+    private function __construct(Html $html=null){
         $this->html = isset($html)?$html:new Html;
 
         $this->html->macro('OpenGraph',function(
@@ -60,12 +64,18 @@ class OpenGraph{
                     $type."' content='".$content."' >";
             }
         });
+        // self::$_instance =$this;
+    }
+    public static function getInstance(){
+        if(!is_object(self::$_instance)){
+            return self::$_instance = new self;
+        }
+        return self::$_instance;
     }
 
 
-
     public function sitename($sitename=""){
-        return $this->html->OpenGraph("site_name",$sitename?:$this->sitename);
+        return $this->html->OpenGraph("site_name",$sitename?:self::__get('sitename'));
     }
 
     public function base(){
@@ -73,24 +83,24 @@ class OpenGraph{
     }
 
     public function title($title=null){
-        return $this->html->OpenGraph("title",$title?:$this->title);
+        return $this->html->OpenGraph("title",$title?:self::__get('title'));
     }
 
     public function author($type="article",$author=null){
         if($type=="book"){
             return $this->html->OpenGraph("book",
-                    $author?:$this->author,"author");
+                    $author?:self::__get("author"),"author");
         }
         return $this->html->OpenGraph($type,
-                    $author?:$this->author,"author");
+                    $author?:self::__get("author"),"author");
     }
 
     public function image($image=""){
-        return $this->html->OpenGraph("image",$image?:$this->image);
+        return $this->html->OpenGraph("image",$image?:self::__get('image'));
     }
 
     public function prefix($og_namespace=""){
-        $og_namespace = $og_namespace?:$this->og_namespace;
+        $og_namespace = $og_namespace?:self::__get('og_namespace');
         return "prefix=\"og: ".$og_namespace."\"";
     }
 
@@ -107,12 +117,12 @@ class OpenGraph{
       * Magic Get Method to replace Native Access Methods
       */
      public function __get($name){
-        $eventedget = Event::fire("og.".$name.".get",$this->{$name});
-        $final= $eventedget[0]?:$this->{$name};
         if($name == "html"){
             return $this->{name};
         }
         else{
+            $eventedget = Event::fire("og.".$name.".get",[$this->{$name}]);
+            $final= isset($eventedget[0])?$eventedget[0]:$this->{$name};
             return $final;
         }
      }
@@ -121,11 +131,11 @@ class OpenGraph{
       * Magic Set Method to replace Native Access Methods
       */
      public function __set($name,$value=null){
-        $eventedset = Event::fire("og.".$name.".set",$value);
+        $eventedset = Event::fire("og.".$name.".set",[$value]);
         if(!(isset($value))){
             $value = isset($eventedset[0])?$eventedset[0]:$value;
         }
-        $this->{$name}=$value?:$this->{name};
+        $this->{$name}=isset($value)?$value:$this->{name};
      }
 
 }

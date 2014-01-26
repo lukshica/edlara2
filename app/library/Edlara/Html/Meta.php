@@ -5,11 +5,15 @@ use Illuminate\Support\Facades\Event;
 
 class Meta {
 
+    /**
+     * Instance
+     */
+    private static $_instance;
 
     /**
      * HTML Object
      */
-    private $html=null;
+    private $html;
 
     /**
      * Site Name
@@ -68,7 +72,12 @@ class Meta {
             endif;
         });
     }
-
+    public function getInstance(){
+        if(is_null(self::$_instance)){
+            return false;
+        }
+        return self::$_instance;
+    }
 
 
     public function removeKeyword($keyword=""){
