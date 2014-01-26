@@ -33,7 +33,7 @@ class EdlaraServiceProvider extends ServiceProvider {
             return new \Edlara\Html\Meta(new \Illuminate\Html\HtmlBuilder);
         });
         \App::bind('opengraph',function(){
-            return new \Edlara\Html\OpenGraph(new \Illuminate\Html\HtmlBuilder);
+            return \Edlara\Html\OpenGraph::getInstance();
         });
     }
 
