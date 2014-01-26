@@ -26,46 +26,6 @@ class MetaTest extends TestCase {
 
     }
 
-    public function testSetGetAuthor(){
-
-        $this->mock = new Edlara\Html\Meta();
-        $this->mock->setAuthor('Testing Author');
-        $this->assertEquals($this->mock->getAuthor(),"Testing Author");
-
-    }
-
-
-    public function testSetGetAuthorWithEvent(){
-
-        Event::listen('meta.author',function(){
-            return "Testing";
-        });
-
-        $this->mock = new Edlara\Html\Meta();
-        $this->mock->setAuthor("Bar");
-        $this->assertNotEquals($this->mock->getAuthor(),"Bar");
-
-    }
-
-    public function testSetGetCharset(){
-
-        $this->mock = new Edlara\Html\Meta();
-        $this->mock->setCharset("Western");
-        $this->assertEquals("Western",$this->mock->getCharset());
-
-    }
-
-    public function testSetGetCharsetWithEvent(){
-
-        Event::listen("meta.charset",function(){
-            return "Unicode";
-        });
-
-        $this->mock = new Edlara\Html\Meta();
-        $this->mock->setCharset("US-ENC");
-        $this->assertNotEquals("US-ENC",$this->mock->getCharset());
-    }
-
     public function testAuthor(){
         $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
         $this->mock->shouldReceive('macro')->once()->andReturn(null);
@@ -96,31 +56,6 @@ class MetaTest extends TestCase {
 
         $this->assertEquals('<meta http-equiv="refresh" content="5" >',$this->result);
     }
-
-    public function testSetGetDescription(){
-        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
-        $this->mock->shouldReceive('macro')->once()->andReturn(null);
-        $this->html = new Edlara\Html\Meta($this->mock);
-
-        $this->html->setDescription("Custom Desc");
-
-        $this->assertEquals("Custom Desc",$this->html->getDescription());
-    }
-
-    public function testSetGetDescriptionWithEvent(){
-        Event::listen('meta.description', function(){
-            return "Custom Extended Desc";
-        });
-
-        $this->mock = m::mock('Illuminate\Html\HtmlBuilder');
-        $this->mock->shouldReceive('macro')->once()->andReturn(null);
-        $this->html = new Edlara\Html\Meta($this->mock);
-
-        $this->html->setDescription("Custom Desc");
-
-        $this->assertNotEquals("Custom Desc",$this->html->getDescription());
-    }
-
 
     public function testGenerator(){
         $html = '<meta name="generator" content="Laravel" >';
