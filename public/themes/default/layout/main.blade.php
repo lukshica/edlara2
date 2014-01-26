@@ -1,6 +1,9 @@
 <!doctype html>
-<html lang="{{ Config::get('application.language') }}">
+<html lang="{{ Config::get('app.locale') }}" {{OG::prefix()}}>
     <head>
+    <?php $og=  new OG;
+    $og->title = "Update";
+     ?>
         {{Meta::charset()}}
 
         {{HTML::title()}}
