@@ -1,3 +1,27 @@
+
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - app/*
+        exclude:
+            - app/assets/*
+            - app/commands/*
+            - app/controllers/BaseController.php
+            - app/routes.php
+            - app/filters.php
+            - app/lang/*
+            - app/models/*
+            - app/storage/*
+            - app/views/*
+            - app/database/*
+            - app/**/*ServiceProvider.php
+            - app/start/*
+            - app/tests/*
+            - app/config/*
+            - vendor/*
+            - coverage/*
+            - bootstrap/*
 paths:
     tests: tests
     log: tests/_log
