@@ -78,9 +78,10 @@ class OpenGraph{
      *
      * @return Object SELF
      */
-    public static function getInstance(){
+    public static function getInstance($instance = null){
+        $instance = $instance?:new Html;
         if(!is_object(self::$_instance)){
-            return self::$_instance = new self;
+            return self::$_instance = new self($instance);
         }
         return self::$_instance;
     }
