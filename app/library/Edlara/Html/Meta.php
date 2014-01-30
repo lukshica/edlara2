@@ -71,8 +71,11 @@ class Meta {
             if(isset($http,$content)): return "<meta http-equiv='".$http."' content='".$content."' >";
             endif;
         });
+        if(!isset(self::$_instance)){
+            self::$_instance = $this;
+        }
     }
-    public function getInstance(){
+    public static function getInstance(){
         if(is_null(self::$_instance)){
             return false;
         }
