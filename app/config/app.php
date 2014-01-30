@@ -208,6 +208,7 @@ return array(
 
         'Meta'            => 'Edlara\Support\Facades\Meta',
         'OG'              => 'Edlara\Support\Facades\OG',
+        'EdLang'          => 'Edlara\Support\Facades\EdLang',
     ),
 
 );
