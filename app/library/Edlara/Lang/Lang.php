@@ -1,6 +1,7 @@
 <?php namespace Edlara\Lang;
 
 use Illuminate\Translation\Translator as Translator;
+use Illuminate\Translation\LoaderInterface;
 class Lang extends Translator {
 
     /**
@@ -13,6 +14,11 @@ class Lang extends Translator {
      * Regex Filter
      */
     private $regex;
+
+    /**
+     * System language
+     */
+    private $lang;
 
     /**
      * Acceptable Languages
@@ -34,11 +40,11 @@ class Lang extends Translator {
      *
      * @return void;
      */
-    public function __construct(){
+    public function __construct(LoaderInterface $loader,$locale){
+        parent::__construct($loader,$locale);
         $this->header = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
         $this->setFilterRegex();
         $this->filterLanguages();
-        return;
     }
     private function setFilterRegex(){
         $re1 = '([a-z]+((-|_)[A-Z]+)?)';
@@ -65,28 +71,50 @@ class Lang extends Translator {
         return $this->accept;
     }
 
-    protected function providableLanguage($string=""){
-        foreach ($this->accept as $key => $value){
-            $trans = \Lang::has($string,$value);
-            if($trans){
-                $this->providablelang[] = $value;
+    public function providableLanguage($string=""){
+        if($string !== null){
+            $replace = array();
+            foreach ($this->accept as $key => $locale){
+                list($namespace, $group, $item) = $this->parseKey($string);
+                foreach ($this->accept as $l)
+                {
+                    $this->load($namespace, $group, $l);
+
+                    $line = $this->getLine(
+                        $namespace, $group, $l, $item, $replace
+                    );
+
+                    if ( ! is_null($line)) break;
+                }
+                if($line !== $string){
+                    $this->providablelang[] = $locale;
+                    $this->providablelang = array_unique($this->providablelang);
+                }
             }
         }
         return $this->providablelang;
     }
-
-    public function guess($string="",array $replace = array(),$locale=null){
-        $providablelang = $this->providableLanguage($string);
-        foreach($providablelang as $key => $value){
-            if(in_array($value ,$this->accept)){
-                $locale = $locale?:$value;
-                return \Lang::get($string,$replace,$locale);
-            }
-        }
-        return \Lang::get($string);
+    public function setLang(){
+        return \App::setLocale($this->preferredlang);
     }
 
-    public function get($string="",array $replace=array(),$locale=null){
+    public function guess($string="",array $replace = array(),$locale=null){
+        $this->providableLanguage($string);
+        if(!empty(array_filter($this->providablelang))){
+            foreach($this->providablelang as $key => $value){
+                if(in_array($value ,$this->accept)){
+                    foreach($this->accept as $accept){
+                        if($accept === $value){
+                            return parent::get($string,$replace,$value);
+                        }
+                    }
+                }
+            }
+        }
+        return parent::get($string,$replace,$locale);
+    }
+
+    public function get($string,array $replace=array(),$locale=null){
         return $this->guess($string,$replace,$locale);
     }
 

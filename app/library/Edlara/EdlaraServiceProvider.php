@@ -19,6 +19,7 @@ class EdlaraServiceProvider extends ServiceProvider {
     public function boot()
     {
         include_once(__DIR__.'/routes.php');
+        include_once(__DIR__.'/helpers.php');
         include_once(__DIR__.'/filters.php');
     }
 
@@ -36,9 +37,6 @@ class EdlaraServiceProvider extends ServiceProvider {
         \App::bind('opengraph',function(){
             return \Edlara\Html\OpenGraph::getInstance();
         });
-        \App::bindShared('translator.edlara',function(){
-            return new \Edlara\Lang\Lang();
-        });
     }
 
     /**
@@ -48,7 +46,7 @@ class EdlaraServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array('meta','opengraph','translator.edlara');
+        return array('meta','opengraph');
     }
 
 }
