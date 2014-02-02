@@ -40,9 +40,9 @@ class Lang extends Translator {
      *
      * @return void;
      */
-    public function __construct(LoaderInterface $loader,$locale){
+    public function __construct(LoaderInterface $loader,$locale,$header=null){
         parent::__construct($loader,$locale);
-        $this->header = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        $this->header = $header?:$_SERVER['HTTP_ACCEPT_LANGUAGE'];
         $this->setFilterRegex();
         $this->filterLanguages();
     }
