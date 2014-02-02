@@ -103,6 +103,7 @@ return array(
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
+        // 'Illuminate\Translation\TranslationServiceProvider',
 
         'Orchestra\Asset\AssetServiceProvider',
         'Orchestra\Auth\AuthServiceProvider',
@@ -119,7 +120,7 @@ return array(
         'Orchestra\Foundation\Reminders\ReminderServiceProvider',
         'Orchestra\Resources\ResourcesServiceProvider',
         'Orchestra\Foundation\SiteServiceProvider',
-        'Orchestra\Translation\TranslationServiceProvider',
+        // 'Orchestra\Translation\TranslationServiceProvider',
         'Orchestra\View\ViewServiceProvider',
         'Orchestra\Widget\WidgetServiceProvider',
 
@@ -136,6 +137,7 @@ return array(
 
 
         'Edlara\EdlaraServiceProvider',
+        'Edlara\Lang\LangServiceProvider'
     ),
 
     /*
@@ -208,7 +210,6 @@ return array(
 
         'Meta'            => 'Edlara\Support\Facades\Meta',
         'OG'              => 'Edlara\Support\Facades\OG',
-        'EdLang'          => 'Edlara\Support\Facades\EdLang',
     ),
 
 );
