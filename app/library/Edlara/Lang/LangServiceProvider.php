@@ -18,10 +18,11 @@ class LangServiceProvider extends ServiceProvider
             // configuration so we can easily get both of these values from there.
             $locale = $app['config']['app.locale'];
 
-            $trans = new Lang($loader, $locale);
+            $header = isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])?$_SERVER['HTTP_ACCEPT_LANGUAGE']:$locale;
+
+            $trans = new Lang($loader, $locale,$header);
 
             return $trans;
-            // return new Lang()FileLoader($app['files'], $app['path'].'/lang');
         });
     }
 }
