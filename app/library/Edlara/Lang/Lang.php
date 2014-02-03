@@ -99,8 +99,7 @@ class Lang extends Translator {
     }
 
     public function guess($string="",array $replace = array(),$locale=null){
-        $this->providableLanguage($string);
-        if(!empty(array_filter($this->providablelang))){
+        if(!empty(array_filter($this->providableLanguage($string)))){
             foreach($this->providablelang as $key => $value){
                 if(in_array($value ,$this->accept)){
                     foreach($this->accept as $accept){
