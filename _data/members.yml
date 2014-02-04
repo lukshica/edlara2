@@ -1,0 +1,31 @@
+- name: Gnanakeethan Balasubramaniam
+  display_name: Gnanakeethan
+  role: Developer
+  email: gnanakeethan@gmail.com
+  web: http://gnanakeethan.github.io
+  twitter: gnanakeethan
+  github: gnanakeethan
+
+- name: Mithushan Jalangan
+  display_name: Mithushan
+  role: Developer
+  email: mithushancj@gmail.com
+  web: http://mithushancj.github.io
+  twitter:
+  github: mithushancj
+
+- name: Sajeevan Veeriah
+  display_name: Sajeevan
+  role: UI Designer
+  email: sajeevanveeriah@gmail.com
+  web: http://sajeevanveeriah.github.io
+  twitter: sajeevanveeriah
+  github: Sajeevanveeriah
+
+- name: Nisanthan Kathirkamanathan
+  display_name: Nisanthan
+  role: Quality Assurance &amp; Testing
+  email: Nisanthan@email.com
+  web: http://Nishaanthan.github.io
+  twitter: knbrothers
+  github: Nishaanthan
