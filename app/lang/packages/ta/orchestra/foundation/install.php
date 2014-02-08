@@ -1,27 +1,27 @@
 <?php
 
 return array(
-    'process'       => 'Installation Process',
-    'hide-password' => 'Database password is hidden for security.',
-    'verify'        => 'Please ensure following configuration is correct based on your :filename.',
-    'solution'      => 'Solution',
+    'process'       => 'நிறுவல் செயல்முறை',
+    'hide-password' => 'தரவுத்தள கடவுச்சொல் பாதுகாப்புக்காக‌ மறைத்துவைக்கப்பட்டுள்ளது.',
+    'verify'        => 'பின்வரும் கட்டமைப்பு உங்கள் :filename அடிப்படையில் சரியானது என்று உறுதி செய்து கொள்ளவும் .',
+    'solution'      => 'தீர்வு',
 
     'status'     => array(
-        'still' => 'Still Workable',
-        'work'  => 'Workable',
-        'not'   => 'Not Workable',
+        'still' => 'இப்பொழுதும் இயங்கக்கூடியது',
+        'work'  => 'இயங்கக்கூடியது',
+        'not'   => 'இயங்கக்கூடியது அல்ல‌',
     ),
 
     'connection' => array(
-        'status'  => 'Connection Status',
-        'success' => 'Successful',
-        'fail'    => 'Failed',
+        'status'  => 'இணைப்பு நிலை',
+        'success' => 'வெற்றி',
+        'fail'    => 'தோல்வி',
     ),
 
     'auth'     => array(
-        'title'       => 'Authentication Setting',
+        'title'       => 'அங்கீகார அமைப்பு',
         'driver'      => 'Driver',
-        'model'       => 'Model',
+        'model'       => 'மாதிரி',
         'requirement' => array(
             'driver'     => 'Orchestra Platform require Auth using the Eloquent Driver',
             'instanceof' => 'Model name should be an instance of :class',
