@@ -114,6 +114,6 @@ gulp.task('watch',function(){
                paths.styles.frontend],['styles']);
 
 });
-gulp.task('default',['styles','scripts','watch']);
+gulp.task('default',['styles','scripts']);
 
 // gulp.watch()
