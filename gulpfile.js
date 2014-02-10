@@ -11,6 +11,10 @@ var imagemin = require('gulp-imagemin');
 var flatten = require('gulp-flatten');
 var watch =require('gulp-watch');
 var plumber = require('gulp-plumber');
+var livereload = require('gulp-livereload');
+var lr = require('tiny-lr');
+var server = lr();
+
 
 var pkg = require('./package.json');
 var banner = ['/**',
@@ -69,19 +73,23 @@ gulp.task('scripts', function() {
         .pipe(uglify())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./public/builds/backend/'))
+       .pipe(livereload(server));
     gulp.src(paths.scripts.frontend)
         .pipe(concat("script.min.js"))
         .pipe(uglify())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./public/builds/frontend/'))
+       .pipe(livereload(server));
     gulp.src(paths.scripts.ng_backend)
         .pipe(ngmin())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./public/builds/backend/'))
+       .pipe(livereload(server));
     gulp.src(paths.scripts.ng_frontend)
         .pipe(ngmin())
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('./public/builds/frontend/'))
+       .pipe(livereload(server));
 });
 gulp.task('styles',function(){
     gulp.src(paths.styles.frontend)
@@ -90,7 +98,9 @@ gulp.task('styles',function(){
        .pipe(concat("style.min.css"))
        .pipe(cssmin({keepSpecialComments:0  }))
        .pipe(header(banner, { pkg : pkg } ))
-       .pipe(gulp.dest('./public/builds/frontend'));
+       .pipe(gulp.dest('./public/builds/frontend'))
+       .pipe(livereload(server));
+       // .pipe(livereload());
 
     gulp.src(paths.styles.backend)
        .pipe(less())
@@ -98,7 +108,8 @@ gulp.task('styles',function(){
        .pipe(concat("style.min.css"))
        .pipe(cssmin({keepSpecialComments:0  }))
        .pipe(header(banner, { pkg : pkg } ))
-       .pipe(gulp.dest('./public/builds/backend'));
+       .pipe(gulp.dest('./public/builds/backend'))
+       .pipe(livereload(server));
 
     gulp.src(paths.fonts)
         .pipe(flatten())
@@ -106,13 +117,15 @@ gulp.task('styles',function(){
 });
 
 gulp.task('watch',function(){
-    gulp.watch([paths.scripts.backend,
-               paths.scripts.frontend,
-               paths.scripts.ng_frontend,
-               paths.scripts.ng_backend],['scripts']);
-    gulp.watch([paths.styles.backend,
-               paths.styles.frontend],['styles']);
+    server.listen(35729, function(err) {
+        gulp.watch([paths.scripts.backend,
+                   paths.scripts.frontend,
+                   paths.scripts.ng_frontend,
+                   paths.scripts.ng_backend],['scripts']);
+        gulp.watch([paths.styles.backend,
+                   paths.styles.frontend],['styles']);
 
+       });
 });
 gulp.task('default',['styles','scripts']);
 
