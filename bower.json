@@ -1,0 +1,23 @@
+{
+  "name": "edlara2",
+  "version": "0.0.1-a.0.0.7.a",
+  "authors": [
+    "Gnanakeethan Balasubramaniam <gnanakeethan@gmail.com>"
+  ],
+  "description": "Educational Laravel Package",
+  "main": "public/index.php",
+  "keywords": [
+    "edlara",
+    "laravel"
+  ],
+  "license": "MIT",
+  "homepage": "http://grans.github.io/edlara2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
