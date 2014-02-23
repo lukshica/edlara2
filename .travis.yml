@@ -4,8 +4,8 @@ php:
   - 5.5
 
 branch:
-	except:
-		- android
+    except:
+        - android
 
 
 before_script:
