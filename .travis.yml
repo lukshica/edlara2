@@ -3,6 +3,11 @@ language: php
 php:
   - 5.5
 
+branch:
+	except:
+		- android
+
+
 before_script:
   - sudo apt-get install libpcre3 libpcre3-dev
   - composer self-update
