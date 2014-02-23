@@ -18,9 +18,13 @@ allprojects {
 apply plugin: 'android'
 
 android {
-    compileSdkVersion 16
-    buildToolsVersion '17'
+    compileSdkVersion 18
+    buildToolsVersion '18'
 
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 18
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
