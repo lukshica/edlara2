@@ -14,3 +14,17 @@ allprojects {
         mavenCentral()
     }
 }
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17.0.0"
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 18
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:13.0.+'
+}
