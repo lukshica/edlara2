@@ -7,6 +7,9 @@
 /public/build/
 
 
+#bower
+/bower_components
+
 #Binary files
 /bin/
 
